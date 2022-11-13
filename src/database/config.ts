@@ -1,4 +1,5 @@
 import { User } from '../users/entities/user.entity';
+import { Bio } from '../bios/entities/bio.entity';
 
 export const defaultConfig = {
   type: 'postgres',
@@ -7,6 +8,6 @@ export const defaultConfig = {
   username: 'postgres',
   password: 'docker',
   database: 'profile_api',
-  entities: [User],
+  entities: [User, Bio],
   synchronize: false,
 };
