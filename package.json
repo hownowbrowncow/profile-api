@@ -22,8 +22,9 @@
     "db:create": "docker run -d --name profile-db-container -p 5432:5432 profile-db",
     "db:stop": "docker container stop profile-db-container",
     "db:rm": "docker rm profile-db-container",
-    "db:pimages": "docker image prune",
-    "db:pcontainers": "docker container prune"
+    "migrate:create": "ts-node ./node_modules/typeorm/cli.js migration:generate -d src/database.ts",
+    "migrate:up": "ts-node ./node_modules/typeorm/cli.js migration:run -d src/database.ts",
+    "migrate:down": "ts-node ./node_modules/typeorm/cli.js migration:revert -d src/database.ts"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
@@ -56,7 +57,7 @@
     "supertest": "^6.1.3",
     "ts-jest": "28.0.8",
     "ts-loader": "^9.2.3",
-    "ts-node": "^10.0.0",
+    "ts-node": "^10.9.1",
     "tsconfig-paths": "4.1.0",
     "typescript": "^4.7.4"
   },
