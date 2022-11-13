@@ -35,6 +35,12 @@ export class UsersService {
     return `This action returns a #${id} user`;
   }
 
+  async findByEmail(email: string) {
+    const user = this.usersRepo.findOneBy({ email });
+
+    return user;
+  }
+
   findOneByUsername(username: string) {
     return `This action returns a ${username} user`;
   }
