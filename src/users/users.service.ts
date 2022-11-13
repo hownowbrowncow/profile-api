@@ -6,6 +6,7 @@ import * as bcrypt from 'bcrypt';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserSchema, UserType } from './user.schema';
+import { Role } from '../auth/constants';
 
 @Injectable()
 export class UsersService {
@@ -20,6 +21,7 @@ export class UsersService {
       name: createUserDto.name,
       email: createUserDto.email,
       password: hash,
+      roles: [Role.Admin, Role.User],
     });
 
     await this.usersRepo.save(user);

@@ -5,6 +5,9 @@ import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
 
 import { AuthService } from './auth.service';
 import { JwtGuard } from './guards/jwt.guard';
+import { Roles } from './decorators/roles.decorator';
+import { RolesGuard } from './guards/roles.guard';
+import { Role } from './constants';
 import { LoginDto } from './dto/login.dto';
 
 @ApiTags('auth')
@@ -26,7 +29,8 @@ export class AuthController {
     description: 'Auth',
   })
   @ApiBearerAuth()
-  @UseGuards(JwtGuard)
+  @UseGuards(JwtGuard, RolesGuard)
+  @Roles(Role.Admin)
   @Post('auth')
   async auth(@Req() req: Request) {
     return req.user;
