@@ -1,5 +1,5 @@
 import { Request } from 'express';
-import { Controller, Req, Post, UseGuards } from '@nestjs/common';
+import { Controller, Req, Post, Get, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
 
@@ -25,13 +25,10 @@ export class AuthController {
     return await this.authService.login(req.user);
   }
 
-  @ApiBody({
-    description: 'Auth',
-  })
   @ApiBearerAuth()
   @UseGuards(JwtGuard, RolesGuard)
   @Roles(Role.Admin)
-  @Post('auth')
+  @Get('auth')
   async auth(@Req() req: Request) {
     return req.user;
   }
