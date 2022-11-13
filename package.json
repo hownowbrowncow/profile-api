@@ -24,13 +24,15 @@
     "db:rm": "docker rm profile-db-container",
     "migrate:create": "ts-node ./node_modules/typeorm/cli.js migration:generate -d src/database/datasource.ts",
     "migrate:up": "ts-node ./node_modules/typeorm/cli.js migration:run -d src/database/datasource.ts",
-    "migrate:down": "ts-node ./node_modules/typeorm/cli.js migration:revert -d src/database/datasource.ts"
+    "migrate:down": "ts-node ./node_modules/typeorm/cli.js migration:revert -d src/database/datasource.ts",
+    "create:user": "nest start -c commander.json -- createUser"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^9.0.0",
+    "@nestjs/swagger": "^6.1.3",
     "@nestjs/typeorm": "^9.0.1",
     "pg": "^8.8.0",
     "reflect-metadata": "^0.1.13",
