@@ -1,8 +1,19 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
+
 import { BiosService } from './bios.service';
 import { CreateBioDto } from './dto/create-bio.dto';
 import { UpdateBioDto } from './dto/update-bio.dto';
 
+@ApiTags('bios')
 @Controller('bios')
 export class BiosController {
   constructor(private readonly biosService: BiosService) {}
