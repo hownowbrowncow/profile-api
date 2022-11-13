@@ -1,5 +1,4 @@
-import { DataSource, DataSourceOptions } from 'typeorm';
-import { UserSchema } from './users/user.schema';
+import { UserSchema } from '../users/user.schema';
 
 export const defaultConfig = {
   type: 'postgres',
@@ -11,5 +10,3 @@ export const defaultConfig = {
   entities: [UserSchema],
   synchronize: false,
 };
-
-export default new DataSource(defaultConfig as DataSourceOptions);
