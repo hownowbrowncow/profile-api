@@ -1,4 +1,4 @@
-import { UserSchema } from '../users/user.schema';
+import { User } from '../users/entities/user.entity';
 
 export const defaultConfig = {
   type: 'postgres',
@@ -7,6 +7,6 @@ export const defaultConfig = {
   username: 'postgres',
   password: 'docker',
   database: 'profile_api',
-  entities: [UserSchema],
+  entities: [User],
   synchronize: false,
 };

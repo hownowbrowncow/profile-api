@@ -5,14 +5,14 @@ import * as bcrypt from 'bcrypt';
 
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { UserSchema, UserType } from './user.schema';
+import { User } from './entities/user.entity';
 import { Role } from '../auth/constants';
 
 @Injectable()
 export class UsersService {
   constructor(
-    @InjectRepository(UserSchema)
-    private usersRepo: Repository<UserType>,
+    @InjectRepository(User)
+    private usersRepo: Repository<User>,
   ) {}
 
   async create(createUserDto: CreateUserDto) {
