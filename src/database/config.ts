@@ -8,6 +8,5 @@ export const defaultConfig = {
   password: 'docker',
   database: 'profile_api',
   entities: [UserSchema],
-  migrations: ['migrations/**/*.ts'],
   synchronize: false,
 };
