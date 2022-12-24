@@ -15,12 +15,10 @@ export class CreateUserCommand extends CommandRunner {
   }
 
   async createUser(): Promise<void> {
-    const user = await this.usersService.create({
+    await this.usersService.create({
       name: 'admin',
       email: 'admin@localhost',
       password: 'password',
     });
-
-    console.log('created user', user);
   }
 }
