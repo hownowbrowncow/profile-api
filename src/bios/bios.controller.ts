@@ -8,7 +8,6 @@ import {
   Delete,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-
 import { BiosService } from './bios.service';
 import { CreateBioDto } from './dto/create-bio.dto';
 import { UpdateBioDto } from './dto/update-bio.dto';
