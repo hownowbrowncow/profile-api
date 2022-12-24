@@ -10,6 +10,7 @@ async function bootstrap() {
     .setDescription('Profile API Swagger')
     .setVersion('1.0')
     .addTag('users')
+    .addTag('bios')
     .addTag('app')
     .addBearerAuth()
     .build();

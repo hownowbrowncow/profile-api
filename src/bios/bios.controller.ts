@@ -18,27 +18,27 @@ export class BiosController {
   constructor(private readonly biosService: BiosService) {}
 
   @Post()
-  create(@Body() createBioDto: CreateBioDto) {
-    return this.biosService.create(createBioDto);
+  async create(@Body() createBioDto: CreateBioDto) {
+    return await this.biosService.create(createBioDto);
   }
 
   @Get()
-  findAll() {
-    return this.biosService.findAll();
+  async findAll() {
+    return await this.biosService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.biosService.findOne(+id);
+  async findOne(@Param('id') uuid: string) {
+    return await this.biosService.findOne(uuid);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateBioDto: UpdateBioDto) {
-    return this.biosService.update(+id, updateBioDto);
+  async update(@Param('id') uuid: string, @Body() updateBioDto: UpdateBioDto) {
+    return await this.biosService.update(uuid, updateBioDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.biosService.remove(+id);
+  async remove(@Param('id') uuid: string) {
+    return await this.biosService.remove(uuid);
   }
 }

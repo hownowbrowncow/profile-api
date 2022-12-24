@@ -21,19 +21,23 @@ export class BiosService {
     return bio;
   }
 
-  findAll() {
-    return `This action returns all bios`;
+  async findAll() {
+    const bios = await this.biosRepo.find();
+
+    return bios;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} bio`;
+  async findOne(uuid: string) {
+    const bio = await this.biosRepo.findOneBy({ id: uuid });
+
+    return bio;
   }
 
-  update(id: number, updateBioDto: UpdateBioDto) {
-    return `This action updates a #${id} bio`;
+  update(uuid: string, updateBioDto: UpdateBioDto) {
+    return `This action updates a #${uuid} bio`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} bio`;
+  remove(uuid: string) {
+    return `This action removes a #${uuid} bio`;
   }
 }
