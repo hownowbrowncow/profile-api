@@ -33,11 +33,16 @@ export class BiosService {
     return bio;
   }
 
-  update(uuid: string, updateBioDto: UpdateBioDto) {
-    return `This action updates a #${uuid} bio`;
+  async update(uuid: string, updateBioDto: UpdateBioDto) {
+    const bio = await this.biosRepo.save({
+      id: uuid,
+      ...updateBioDto,
+    });
+
+    return bio;
   }
 
-  remove(uuid: string) {
-    return `This action removes a #${uuid} bio`;
+  async remove(uuid: string) {
+    await this.biosRepo.delete(uuid);
   }
 }

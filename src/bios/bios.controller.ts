@@ -39,6 +39,8 @@ export class BiosController {
 
   @Delete(':id')
   async remove(@Param('id') uuid: string) {
-    return await this.biosService.remove(uuid);
+    await this.biosService.remove(uuid);
+
+    return { ok: true };
   }
 }
