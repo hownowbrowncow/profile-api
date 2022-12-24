@@ -25,7 +25,9 @@
     "migrate:create": "ts-node ./node_modules/typeorm/cli.js migration:generate -d src/database/datasource.ts",
     "migrate:up": "ts-node ./node_modules/typeorm/cli.js migration:run -d src/database/datasource.ts",
     "migrate:down": "ts-node ./node_modules/typeorm/cli.js migration:revert -d src/database/datasource.ts",
-    "create:user": "nest start -c commander.json -- createUser"
+    "create:all": "npm run create:user && npm run create:bio",
+    "create:user": "nest start -c commander.json -- createUser",
+    "create:bio": "nest start -c commander.json -- createBio"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
