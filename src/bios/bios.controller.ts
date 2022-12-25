@@ -7,9 +7,10 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { BiosService } from './bios.service';
 import { CreateBioDto } from './dto/create-bio.dto';
+import { ResponseBioDto } from './dto/response-bio.dto';
 import { UpdateBioDto } from './dto/update-bio.dto';
 
 @ApiTags('bios')
@@ -18,21 +19,38 @@ export class BiosController {
   constructor(private readonly biosService: BiosService) {}
 
   @Post()
+  @ApiResponse({
+    description: 'Create a bio.',
+    type: ResponseBioDto,
+  })
   async create(@Body() createBioDto: CreateBioDto) {
     return await this.biosService.create(createBioDto);
   }
 
   @Get()
+  @ApiResponse({
+    description: 'Get all bios. (There should be only one)',
+    type: ResponseBioDto,
+    isArray: true,
+  })
   async findAll() {
     return await this.biosService.findAll();
   }
 
   @Get(':id')
+  @ApiResponse({
+    description: 'Get a bio by id.',
+    type: ResponseBioDto,
+  })
   async findOne(@Param('id') uuid: string) {
     return await this.biosService.findOne(uuid);
   }
 
   @Patch(':id')
+  @ApiResponse({
+    description: 'Patch a bio by id.',
+    type: ResponseBioDto,
+  })
   async update(@Param('id') uuid: string, @Body() updateBioDto: UpdateBioDto) {
     return await this.biosService.update(uuid, updateBioDto);
   }
