@@ -29,29 +29,23 @@ export class UsersService {
     return user;
   }
 
-  findAll() {
-    return `This action returns all users`;
+  async findAll() {
+    return await this.usersRepo.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOne(uuid: string) {
+    return await this.usersRepo.findOneBy({ id: uuid });
   }
 
   async findByEmail(email: string) {
-    const user = this.usersRepo.findOneBy({ email });
-
-    return user;
+    return await this.usersRepo.findOneBy({ email });
   }
 
-  findOneByUsername(username: string) {
-    return `This action returns a ${username} user`;
+  async update(uuid: string, updateUserDto: UpdateUserDto) {
+    return await this.usersRepo.save({ id: uuid, ...updateUserDto });
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async remove(uuid: string) {
+    await this.usersRepo.delete({ id: uuid });
   }
 }
