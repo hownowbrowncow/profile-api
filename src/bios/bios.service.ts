@@ -27,6 +27,13 @@ export class BiosService {
     return bios;
   }
 
+  async findFirst() {
+    const bios = await this.biosRepo.find();
+    const bio = bios[0];
+
+    return bio;
+  }
+
   async findOne(uuid: string) {
     const bio = await this.biosRepo.findOneBy({ id: uuid });
 

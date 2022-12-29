@@ -37,6 +37,15 @@ export class BiosController {
     return await this.biosService.findAll();
   }
 
+  @Get('/first')
+  @ApiResponse({
+    description: 'Get first bio.',
+    type: ResponseBioDto,
+  })
+  async findFirst() {
+    return await this.biosService.findFirst();
+  }
+
   @Get(':id')
   @ApiResponse({
     description: 'Get a bio by id.',
